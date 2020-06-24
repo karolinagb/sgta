@@ -1,0 +1,44 @@
+﻿@model IEnumerable<sgta.Models.Tarefas>
+
+<h4>Todos as tarefas</h4>
+<p>
+    @Html.ActionLink("Adicionar nova tarefa", "Incluir")
+    <label> | </label>
+    @Html.ActionLink("Tarefas Vencendo hoje", "ObterTarefasPorData")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dataCadastro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dataLimite)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    
+    @Html.HiddenFor(model => item.id)
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dataCadastro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dataLimite)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "EditarTarefa", new { id = item.id })
+            <label> | </label>
+            @Html.ActionLink("Excluir", "Excluir", new { id = item.id }, new { onclick = "return confirm('Tem certeza que deseja excluir a tarefa??');"})
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,33 @@
+﻿@model IEnumerable<sgta.Models.Tarefas>
+
+<h4>Tarefas vencendo hoje:</h4>
+<p>
+    @Html.ActionLink("Voltar a todas as tarefas", "ObterTarefas")
+</p>
+<table class="table">
+    <tr class="table-bordered">
+        <th>
+            @Html.DisplayNameFor(model => model.nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dataLimite)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr >
+        <td class="danger">
+            @Html.DisplayFor(modelItem => item.nome)
+        </td>
+        <td class="danger">
+            @Html.DisplayFor(modelItem => item.dataLimite)
+        </td>
+    </tr>
+}
+
+</table>
+
+<script language=javascript>
+    alert("Estas são as tarefas vencendo hoje!!");
+</script>
